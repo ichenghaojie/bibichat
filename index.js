@@ -1,11 +1,12 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-app.get('/', function(req, res){
-	res.send('<h1>Welcome Realtime Server</h1>');
-});
-
+// app.get('/', function(req, res){
+// 	res.send('<h1>Welcome Realtime Server</h1>');
+// });
+app.use('/', express.static(__dirname + '/client'));
 //在线用户
 var onlineUsers = {};
 //当前在线人数
@@ -81,6 +82,4 @@ io.on('connection', function(socket){
   
 });
 
-http.listen(process.env.PORT || 3000, function(){
-	console.log('listening on *:3000');
-});
+http.listen(process.env.PORT || 3000);

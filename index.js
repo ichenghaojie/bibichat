@@ -8,7 +8,7 @@ var io = require('socket.io')(http);
 // });
 app.use('/', express.static(__dirname + '/client'));
 
-http.listen(process.env.PORT || 5000);
+http.listen(5000 || process.env.PORT);
 //在线用户
 var onlineUsers = {};
 //当前在线人数

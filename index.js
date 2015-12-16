@@ -1,14 +1,14 @@
 var express = require('express');
 var app = express();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
 // app.get('/', function(req, res){
 // 	res.send('<h1>Welcome Realtime Server</h1>');
 // });
 app.use('/', express.static(__dirname + '/client'));
 
-http.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 3000);
 //在线用户
 var onlineUsers = {};
 //当前在线人数
